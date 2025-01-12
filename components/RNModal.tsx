@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     left: "50%",
     top: "50%",
     transform: [{ translateX: "-50%" }, { translateY: "-50%" }],
-    width: "80%",
+    width: "90%",
     minHeight: 180,
     backgroundColor: "white",
     borderRadius: 16,
