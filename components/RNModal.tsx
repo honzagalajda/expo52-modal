@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import { BlurView } from "expo-blur";
 import useModalControls from "@/hooks/useModalControls";
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
 const RNModal = () => {
   const { isVisible, showModal, hideModal } = useModalControls();
@@ -25,9 +26,9 @@ const RNModal = () => {
         </Pressable>
       </Modal>
       {isVisible && (
-        <View style={styles.modalBackdrop}>
+        <Animated.View exiting={FadeOut} entering={FadeIn} style={styles.modalBackdrop}>
           <BlurView intensity={20} tint="dark" style={{ flex: 1 }} />
-        </View>
+        </Animated.View>
       )}
     </>
   );
