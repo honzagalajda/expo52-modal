@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { BlurView } from "expo-blur";
 
 const RNModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -9,16 +10,20 @@ const RNModal = () => {
   return (
     <>
       <Button title="Show RN modal" onPress={toggleModal} />
-      <Modal animationType="fade" visible={modalVisible} transparent>
-        <Pressable onPress={toggleModal} style={styles.modalBackdrop} />
+      {modalVisible && (
+        <Pressable onPress={toggleModal} style={styles.modalBackdrop}>
+          <BlurView intensity={20} tint="dark" style={{ flex: 1 }} />
+        </Pressable>
+      )}
+      <Modal animationType="slide" visible={modalVisible} transparent>
         <View style={styles.modalContainer}>
           <Text>This is model from React native</Text>
           <Button title="Close" onPress={toggleModal} />
         </View>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 export default RNModal;
 
@@ -30,7 +35,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.25)",
   },
   modalContainer: {
     position: "absolute",
@@ -44,4 +49,4 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     padding: 8,
   },
-})
+});
