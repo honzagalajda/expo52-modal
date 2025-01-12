@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import RNModal from "@/components/RNModal";
+import { StyleSheet, View } from "react-native";
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={{ textAlign: "center" }}>Hello World</Text>
+      <RNModal />
     </View>
   );
 }
